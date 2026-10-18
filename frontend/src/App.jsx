@@ -31,10 +31,29 @@ function App() {
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: '40px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
       {/* Sección Personal */}
-      <div style={{ borderBottom: '2px solid #eee', paddingBottom: '20px' }}>
-        <h1 style={{ margin: '0 0 10px 0', color: '#333' }}>{personal.nombre}</h1>
-        <h3 style={{ margin: '0 0 10px 0', color: '#0066cc' }}>{personal.profesion}</h3>
-        <p style={{ color: '#555', lineHeight: '1.5' }}>{personal.descripcion}</p>
+      <div style={{ borderBottom: '2px solid #eee', paddingBottom: '20px', display: 'flex', gap: '20px', alignItems: 'center' }}>
+        
+        {/* FOTO DE PERFIL */}
+        {personal.foto && (
+          <img 
+            src={personal.foto} 
+            alt={`${personal.nombre} ${personal.apellido}`} 
+            style={{ width: '130px', height: '130px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #0066cc' }} 
+          />
+        )}
+
+        <div>
+          {/* NOMBRE Y APELLIDO */}
+          <h1 style={{ margin: '0 0 5px 0', color: '#333' }}>{personal.nombre} {personal.apellido}</h1>
+          <h3 style={{ margin: '0 0 5px 0', color: '#0066cc' }}>{personal.profesion}</h3>
+          
+          {/* CIUDAD */}
+          {personal.ciudad && (
+            <p style={{ margin: '0 0 10px 0', color: '#777', fontWeight: 'bold' }}>📍 {personal.ciudad}</p>
+          )}
+
+          <p style={{ color: '#555', lineHeight: '1.5', margin: 0 }}>{personal.descripcion}</p>
+        </div>
       </div>
       
       {/* Sección Formación Académica */}
@@ -43,7 +62,7 @@ function App() {
         <ul style={{ paddingLeft: '20px' }}>
           {formacion && formacion.map((item) => (
             <li key={item.id} style={{ marginBottom: '12px', color: '#444' }}>
-              <strong>{item.titulo}</strong> - {item.institucion} <em>({item.anio})</em>
+              <strong>{item.titulo}</strong> — {item.institucion} <em>({item.anio})</em>
             </li>
           ))}
         </ul>

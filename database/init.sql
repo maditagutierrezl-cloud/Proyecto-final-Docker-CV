@@ -4,6 +4,9 @@ USE cv_db;
 CREATE TABLE IF NOT EXISTS persona (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    ciudad VARCHAR(100) NOT NULL,
+    foto VARCHAR(255) NOT NULL,
     profesion VARCHAR(100) NOT NULL,
     descripcion TEXT NOT NULL
 );
@@ -15,8 +18,15 @@ CREATE TABLE IF NOT EXISTS formacion (
     anio VARCHAR(50) NOT NULL
 );
 
-INSERT INTO persona (nombre, profesion, descripcion) 
-VALUES ('Madain Gutierrez', 'Ingeniero de Sistemas', 'Desarrollador Full Stack.');
+INSERT INTO persona (nombre, apellido, ciudad, foto, profesion, descripcion) 
+VALUES (
+    'Madain', 
+    'Gutierrez Loayza', 
+    'La Paz', 
+    '/foto.jpeg', 
+    'Ingeniero de Sistemas', 
+    'Desarrollador Full Stack.'
+);
 
 INSERT INTO formacion (titulo, institucion, anio) 
 VALUES 
